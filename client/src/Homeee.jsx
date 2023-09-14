@@ -7,6 +7,7 @@ function Homeee(){
       <h1 className="text-3xl font-bold mb-4 text-blue-800">
         Welcome to My Tailwind React App
       </h1>
+      <p>Hello there!!</p>
 
       <button className="profile-settings" onClick={()=>{
           logout()
