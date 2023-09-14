@@ -22,7 +22,7 @@ function SignInPage() {
             console.log(CredentialResponseDecoded);
 
             saveLogin(CredentialResponseDecoded);
-            navigate("/home");
+            navigate("/dashboard");
           }}
           onError={() => {
             console.log("Login Failed");
