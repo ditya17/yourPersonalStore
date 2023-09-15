@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { RiCloseLine, RiMenu3Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const navItem = [
   { name: "Home", href: "/" },
@@ -10,6 +10,11 @@ const navItem = [
 
 const Navbar = () => {
   const [navIsVisible, setNavIsVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignInClick = () => {
+    navigate('/signin');
+  };
 
   const navVisibilityHandler = () => {
     setNavIsVisible((currState) => {
@@ -47,9 +52,8 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
-          <button className="mt-2 md:mt-0 md:ml-4 text-lg font-semibold shadow-md bg-[rgba(255,255,255,0.40)] text-white py-1.5 px-4 rounded-md">
-            Sign In
-          </button>
+          <button className="mt-2 md:mt-0 md:ml-4 text-lg font-semibold shadow-md bg-[rgba(255,255,255,0.40)] text-white py-1.5 px-4 rounded-md"
+            onClick={handleSignInClick}>Sign In</button>
         </ul>
       </div>
     </section>
