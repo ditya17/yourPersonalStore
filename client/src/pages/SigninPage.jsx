@@ -1,15 +1,15 @@
 import React from "react";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-import {useNavigate} from 'react-router-dom';
-import { saveLogin } from "./functions/auth";
+import { useNavigate } from "react-router-dom";
+import { saveLogin } from "../functions/auth";
 
-function SignInPage() {
-    const navigate = useNavigate();
+const SigninPage = () => {
+  const navigate = useNavigate();
 
   return (
     <div className="bg-yellow-200 p-8 text-center">
-        <h1 className="text-3xl font-bold mb-4 text-blue-800">
+      <h1 className="text-3xl font-bold mb-4 text-blue-800">
         SignIn to yourPersonal Store
       </h1>
       <div className="google-login">
@@ -32,6 +32,6 @@ function SignInPage() {
       </div>
     </div>
   );
-}
+};
 
-export default SignInPage;
+export default SigninPage;
