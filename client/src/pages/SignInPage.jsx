@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import {useNavigate} from 'react-router-dom';
-import { saveLogin } from "./functions/auth";
+import { saveLogin } from "../functions/auth";
 
 function SignInPage() {
     const navigate = useNavigate();
