@@ -4,13 +4,14 @@ import SignInPage from "./pages/SignInPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainLayout from "./Dashboard/admin/MainLayout";
 import Dashboard from "./Dashboard/pages/Dashboard"
-import Customers from "./Dashboard/pages/Customers";
+import Customers from "./Dashboard/pages/Users";
 import Categorylist from "./Dashboard/pages/Categorylist";
 import Productlist from "./Dashboard/pages/Productlist";
 import Addcat from "./Dashboard/pages/Addcat";
 import Addproduct from "./Dashboard/pages/Addproduct";
 import Profile from "./Dashboard/pages/Profile";
 import MainLayoutUser from "./Dashboard/User/MainLayoutUser";
+import ProductlistaAdmin from "./Dashboard/admin/ProductlistaAdmin";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="list-category" element={<Categorylist />} />
             <Route path="category" element={<Addcat />} />
-            <Route path="list-product" element={<Productlist />} />
+            <Route path="list-product" element={<ProductlistaAdmin />} />
             <Route path="product" element={<Addproduct />} />
           </Route>
           <Route path="/user" element={<MainLayoutUser />}>
