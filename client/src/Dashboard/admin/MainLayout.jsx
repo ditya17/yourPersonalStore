@@ -16,7 +16,7 @@ import { Layout, Menu, theme } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
-  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // State variable for the modal
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); 
 
 
   useEffect(() => {
