@@ -8,6 +8,7 @@ module.exports = {
       },
       fontFamily: {
         DM_Sans: ["DM Sans", "sans-serif"],
+        Poppins: ["Poppins", "sans-serif"],
       },
     },
   },
