@@ -17,6 +17,12 @@ import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); 
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+    setUserData(userDataFromStorage);
+  }, []);
 
 
   useEffect(() => {
@@ -112,43 +118,43 @@ const MainLayout = () => {
             </div>
 
             <div className="d-flex gap-3 align-items-center dropdown">
-              <div>
-                <img
-                  width={32}
-                  height={32}
-                  src="https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg"
-                  alt=""
-                />
-              </div>
-              <div
-                role="button"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <h5 className="mb-0">admin</h5>
-                <p className="mb-0">admin@gmail.com</p>
-              </div>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <Link
-                    className="dropdown-item py-1 mb-1"
-                    style={{ height: "auto", lineHeight: "20px" }}
-                    to="/"
-                  >
-                    View Profile
-                  </Link>
-                </li>
-                <li>
-                <Link
-            className="dropdown-item py-1 mb-1"
-            onClick={handleSignoutClick} // Open the modal when clicked
-          >
-            Signout
-          </Link>
-                </li>
-              </div>
-            </div>
+        <div>
+          <img
+            width={32}
+            height={32}
+            src={userData?.picture || "default-user-image-url"}
+            alt=""
+          />
+        </div>
+        <div
+          role="button"
+          id="dropdownMenuLink"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <h5 className="mb-0">{userData?.name || "User Name"}</h5> 
+          <p className="mb-0">{userData?.email || "user@gmail.com"}</p> 
+        </div>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li>
+            <Link
+              className="dropdown-item py-1 mb-1"
+              style={{ height: "auto", lineHeight: "20px" }}
+              to="/"
+            >
+              View Profile
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="dropdown-item py-1 mb-1"
+              onClick={handleSignoutClick} // Open the modal when clicked
+            >
+              Signout
+            </Link>
+          </li>
+        </div>
+      </div>
           </div>
         </Header>
         <Content
