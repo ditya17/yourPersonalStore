@@ -17,6 +17,12 @@ import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const MainLayoutUser = () => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+    setUserData(userDataFromStorage);
+  }, []);
 
 
   useEffect(() => {
@@ -61,10 +67,7 @@ const MainLayoutUser = () => {
             }
           }}
           items={[
-            {
-              icon: <BiUserCircle className="fs-1" />,
-              label: "User",
-            },
+            
             {
               key: "",
               icon: <AiOutlineDashboard className="fs-4" />,
@@ -85,16 +88,7 @@ const MainLayoutUser = () => {
               icon: <BsCartCheck className="fs-4" />,
               label: "Product List",
             },
-            {
-              key: "category",
-              icon: <BiCategoryAlt className="fs-4" />,
-              label: "Category",
-            },
-            {
-              key: "list-category",
-              icon: <AiOutlineUnorderedList className="fs-4" />,
-              label: "Category List",
-            },
+           
             <hr className=" my-10" />,
             <hr className=" my-10" />,
             <hr className=" my-10 " />,
@@ -133,43 +127,43 @@ const MainLayoutUser = () => {
             </div>
 
             <div className="d-flex gap-3 align-items-center dropdown">
-              <div>
-                <img
-                  width={32}
-                  height={32}
-                  src="https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg"
-                  alt=""
-                />
-              </div>
-              <div
-                role="button"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <h5 className="mb-0">admin</h5>
-                <p className="mb-0">admin@gmail.com</p>
-              </div>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <Link
-                    className="dropdown-item py-1 mb-1"
-                    style={{ height: "auto", lineHeight: "20px" }}
-                    to="/"
-                  >
-                    View Profile
-                  </Link>
-                </li>
-                <li>
-                <Link
-            className="dropdown-item py-1 mb-1"
-            onClick={handleSignoutClick} // Open the modal when clicked
-          >
-            Signout
-          </Link>
-                </li>
-              </div>
-            </div>
+        <div>
+          <img
+            width={32}
+            height={32}
+            src={userData?.picture || "default-user-image-url"}
+            alt=""
+          />
+        </div>
+        <div
+          role="button"
+          id="dropdownMenuLink"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <h5 className="mb-0">{userData?.name || "User Name"}</h5> 
+          <p className="mb-0">{userData?.email || "user@gmail.com"}</p> 
+        </div>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li>
+            <Link
+              className="dropdown-item py-1 mb-1"
+              style={{ height: "auto", lineHeight: "20px" }}
+              to="/"
+            >
+              View Profile
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="dropdown-item py-1 mb-1"
+              onClick={handleSignoutClick} // Open the modal when clicked
+            >
+              Signout
+            </Link>
+          </li>
+        </div>
+      </div>
           </div>
         </Header>
         <Content
